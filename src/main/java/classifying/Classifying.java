@@ -60,9 +60,15 @@ public class Classifying {
         String[] parts = subjectName.split("-");
         int length = parts.length;
         String value = parts[length - 1];
-        String[] important = value.split("red_");
-        String foldNumberStr = important[0];
-        String executionStr = important[1];
+        String foldNumberStr = null;
+        if (value.contains("red_")) {
+            String[] important = value.split("red_");
+            foldNumberStr = important[0];
+            String executionStr = important[1];
+        } else {
+            String[] important = value.split("tra");
+            foldNumberStr = important[0];
+        }
 
         String testFileName = testFolderName + "-" + parts[length - 2] + "-" + foldNumberStr + "tst.arff";
         Debug.println("Fit Test File: " + testFileName);

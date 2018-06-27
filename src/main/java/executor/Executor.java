@@ -2,6 +2,7 @@ package executor;
 
 import classifying.Classifying;
 import statistic.Processor;
+import sun.reflect.Reflection;
 import training.Training;
 
 import java.io.IOException;
@@ -41,7 +42,7 @@ public class Executor {
         System.out.println();
         System.out.println();
         System.out.println("KNN");
-        System.out.println(classifying.getAlgorithmMapJ48().values());
+        System.out.println(classifying.getAlgorithmMapKNN().values());
     }
 
     public static void main(String[] args) throws IOException {
