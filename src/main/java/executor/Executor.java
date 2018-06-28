@@ -34,7 +34,10 @@ public class Executor {
         System.out.println("---------------------------  Classification  -----------------------------");
         System.out.println("--------------------------------------------------------------------------");
         //prepare all the data to be used
-        classifying.execute(Paths.get("C:\\Outros\\IC_Stats\\executor\\small"), Paths.get("C:\\Users\\joaop\\Desktop\\Small"));
+        classifying.execute(
+                Paths.get("C:\\Outros\\IC_Stats\\executor\\small"),
+                Paths.get("C:\\Users\\joaop\\Desktop\\Small"),
+                Paths.get("C:\\Users\\joaop\\Desktop\\Small"));
 
         System.out.println("J48");
         System.out.println(classifying.getAlgorithmMapJ48().values());
@@ -43,6 +46,8 @@ public class Executor {
         System.out.println();
         System.out.println("KNN");
         System.out.println(classifying.getAlgorithmMapKNN().values());
+
+        Processor.create().with(classifying).execute();
     }
 
     public static void main(String[] args) throws IOException {
