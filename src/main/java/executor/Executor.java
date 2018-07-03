@@ -18,13 +18,13 @@ public class Executor {
     }
 
     private void all() throws IOException {
-        //trainingStats();
+        trainingStats();
         classificationStats();
     }
 
     private void trainingStats() {
         //runs the training to fill with data
-        training.execute(Paths.get("C:\\Outros\\IC_Stats\\small\\data"));
+        training.execute(Paths.get("C:\\Outros\\IC_Stats\\medium\\data"));
         //execute the statistics to display table
         Processor.create().with(training).execute();
     }
@@ -35,9 +35,9 @@ public class Executor {
         System.out.println("--------------------------------------------------------------------------");
         //prepare all the data to be used
         classifying.execute(
-                Paths.get("C:\\Outros\\IC_Stats\\executor\\small"),
-                Paths.get("C:\\Users\\joaop\\Desktop\\Small"),
-                Paths.get("C:\\Users\\joaop\\Desktop\\Small"));
+                Paths.get("C:\\Outros\\IC_Stats\\executor\\medium"),
+                Paths.get("C:\\Users\\joaop\\Desktop\\Medium"),
+                Paths.get("C:\\Users\\joaop\\Desktop\\Medium"));
 
         System.out.println("J48");
         System.out.println(classifying.getAlgorithmMapJ48().values());

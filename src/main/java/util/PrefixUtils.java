@@ -20,7 +20,7 @@ public class PrefixUtils {
                 boolean newFile = file.mkdirs();
                 Files.list(path).forEach(sub -> removePrefix(prefix, sub, file.toPath(), removeTest));
             } else {
-                if (!(name.contains("tst.dat") && removeTest)) {
+                if (!((name.contains("tst.dat") || name.contains("tst.arff")) && removeTest)) {
                     Files.copy(path, new File(destination.toFile(), name).toPath(), StandardCopyOption.REPLACE_EXISTING);
                     System.out.println("File: " + oldName + " -> " + name);
                 }
@@ -31,8 +31,8 @@ public class PrefixUtils {
     }
 
     public static void main(String[] args) {
-        removePrefix("RNG-TSS.", Paths.get("C:\\Users\\joaop\\Desktop\\datasets"), Paths.get("C:\\Users\\joaop\\Desktop\\fixed"), true);
-        parseFile(Paths.get("C:\\Users\\joaop\\Desktop\\fixed"));
+        removePrefix("PBIL-TSSs0.", Paths.get("C:\\Users\\joaop\\Desktop\\fixed_med\\dataset_med"), Paths.get("C:\\Users\\joaop\\Desktop\\med_final"), true);
+        parseFile(Paths.get("C:\\Users\\joaop\\Desktop\\med_final"));
     }
 
     public static void parseFile(Path path) {
@@ -40,7 +40,9 @@ public class PrefixUtils {
             if (path.toFile().isDirectory()) {
                 Files.list(path).forEach(PrefixUtils::parseFile);
             } else {
-                DatFixer.fixDatFormat(path.toFile());
+                if (!path.toFile().getName().endsWith(".arff")) {
+                    DatFixer.fixDatFormat(path.toFile());
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

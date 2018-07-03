@@ -38,7 +38,7 @@ public class Statistics {
         System.out.println("---------------------------------------------------");
         System.out.println("           ---    Accuracy Array    ---");
         System.out.println("---------------------------------------------------");
-        for (int i = 0; i < algPosition.entrySet().size(); i++) System.out.print("[" + i + " is " + algPosition.get(i) + "] ");
+        for (int i = 0; i < algPosition.entrySet().size(); i++) System.out.print("[" + (i + 1) + " is " + algPosition.get(i) + "] ");
         System.out.println();
 
         double[][] transposed = transpose(array);
